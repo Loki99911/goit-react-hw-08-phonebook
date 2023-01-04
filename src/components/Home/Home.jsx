@@ -1,11 +1,11 @@
+import { HomeTitle } from './Home.styled';
+
 const Home = () => {
-    return (
-      <div>
-        <h1>
-          Welcome to Your phone book!!!{' '}
-        </h1>
-      </div>
-    );
- }
+  return (
+    <div>
+      <HomeTitle>Welcome to Your phone book!!! </HomeTitle>
+    </div>
+  );
+};
 
 export default Home;

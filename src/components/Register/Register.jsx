@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signupUser } from '../../redux/operations';
+import {} from './Register.styled';
 
 const Register = () => {
   const dispatch = useDispatch();

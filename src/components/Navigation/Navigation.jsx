@@ -1,27 +1,30 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 // import { Container, Header, Link } from './Layout.styled';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
+import { NavigationContainer, Link } from './Navigation.styled';
 
 export const Navigation = () => {
   const isLogin = useSelector(state => state.user.isLogin);
   return (
     <>
-      <header>
-        <NavLink to="/" end>
-          Home
-        </NavLink>
-        {isLogin && <NavLink to="/contacts">Contacts</NavLink>}
+      <NavigationContainer>
+        <div>
+          <Link to="/" end>
+            Home
+          </Link>
+          {isLogin && <Link to="/contacts">Contacts</Link>}
+        </div>
         {!isLogin && (
-          <>
-            <NavLink to="/register">Register</NavLink>
-            <NavLink to="/login">Login</NavLink>
-          </>
+          <div>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
+          </div>
         )}
         {isLogin && <UserMenu />}
-      </header>
+      </NavigationContainer>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>

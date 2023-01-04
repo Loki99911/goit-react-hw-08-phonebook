@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getCurrentUser } from '../redux/operations';
 import { Navigation } from './Navigation/Navigation';
 import { PrivateRoute, PublicRoute } from './PPRouts';
+import { AppContainer } from './App.styled';
 
 const Home = lazy(() => import('./Home/Home'));
 const Register = lazy(() => import('./Register/Register'));
@@ -19,7 +20,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <AppContainer>
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route
@@ -56,6 +57,6 @@ export const App = () => {
           />
         </Route>
       </Routes>
-    </>
+    </AppContainer>
   );
 };
