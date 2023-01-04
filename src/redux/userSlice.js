@@ -23,7 +23,7 @@ export const userSlice = createSlice({
     },
 
     [loginUser.fulfilled]: (state, action) => {
-    state.token = action.payload.token;
+      state.token = action.payload.token;
       state.user = action.payload.user;
       state.isLogin = true;
     },

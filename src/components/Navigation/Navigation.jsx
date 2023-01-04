@@ -14,9 +14,13 @@ export const Navigation = () => {
           Home
         </NavLink>
         {isLogin && <NavLink to="/contacts">Contacts</NavLink>}
-        <NavLink to="/register">Register</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <UserMenu />
+        {!isLogin && (
+          <>
+            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/login">Login</NavLink>
+          </>
+        )}
+        {isLogin && <UserMenu />}
       </header>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />

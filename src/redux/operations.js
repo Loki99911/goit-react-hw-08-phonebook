@@ -61,11 +61,16 @@ export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
   await axios.post('/users/logout');
   token.unset();
 });
-// token - прошить!!!!
-export const getCurrentUser = createAsyncThunk(
-  'user/currentUser',
-  async () => {
+
+export const getCurrentUser = createAsyncThunk('user/currentUser', async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+console.log(state);
+  // if () { }
+  try {
     const response = await axios.get('/users/current');
     return response.data;
+  } catch (error) {
+     return thunkAPI.rejectWithValue();
   }
-);
+  
+});
