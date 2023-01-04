@@ -6,25 +6,30 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async () => {
-    const response = await axios.get('/contacts');
-    return response.data;
+    try {
+      const response = await axios.get('/contacts');
+      return response.data;
+    } catch (error) {}
   }
 );
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async object => {
-    console.log(object);
-    const response = await axios.post('/contacts', object);
-    return response.data;
+    try {
+      const response = await axios.post('/contacts', object);
+      return response.data;
+    } catch (error) {}
   }
 );
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async id => {
-    const response = await axios.delete(`/contacts/${id}`);
-    return response.data.id;
+    try {
+      const response = await axios.delete(`/contacts/${id}`);
+      return response.data.id;
+    } catch (error) {}
   }
 );
 

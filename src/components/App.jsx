@@ -1,22 +1,19 @@
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navigation } from './Navigation/Navigation';
-import { Home } from './Home/Home';
-import { Contacts } from './Contacts/Contacts';
-import { Register } from './Register/Register';
-import { Login } from './Login/Login';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCurrentUser } from '../redux/operations';
+import { Navigation } from './Navigation/Navigation';
+import { PrivateRoute, PublicRoute } from './PPRouts';
 
-// const Home = lazy(() => import('./Home/Home'));
-// const Register = lazy(() => import('./Register'));
-// const Login = lazy(() => import('./Login'));
-// const Contacts = lazy(() => import('./Contacts/Contacts'));
+const Home = lazy(() => import('./Home/Home'));
+const Register = lazy(() => import('./Register/Register'));
+const Login = lazy(() => import('./Login/Login'));
+const Contacts = lazy(() => import('./Contacts/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
@@ -25,10 +22,38 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Navigation />}>
-          <Route index element={<Home />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="contacts" element={<Contacts />} />
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <Home />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <PublicRoute restricted>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute restricted>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <Contacts />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </>

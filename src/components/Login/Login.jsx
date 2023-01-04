@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/operations';
 
-// export default function Login() {
-    export const Login = () => {
+
+const Login = () => {
     const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -56,3 +56,5 @@ import { loginUser } from '../../redux/operations';
     </div>
   );
 }
+
+export default Login;

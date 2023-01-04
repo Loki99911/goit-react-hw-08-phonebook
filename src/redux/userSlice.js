@@ -12,7 +12,6 @@ export const userSlice = createSlice({
     user: { name: null, email: null },
     token: null,
     isLogin: false,
-    // error: null,
   },
 
   extraReducers: {

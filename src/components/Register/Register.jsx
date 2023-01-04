@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signupUser } from '../../redux/operations';
 
-export  const Register = () => {
+const Register = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -64,3 +64,5 @@ export  const Register = () => {
     </div>
   );
 }
+
+export default Register;

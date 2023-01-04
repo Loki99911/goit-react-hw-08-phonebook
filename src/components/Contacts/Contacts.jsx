@@ -2,7 +2,7 @@ import { Filter } from './Filter/Filter';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList ';
 
-export const Contacts = () => {
+const Contacts = () => {
   return (
     <div
       style={{
@@ -22,3 +22,5 @@ export const Contacts = () => {
     </div>
   );
 };
+
+export default Contacts;
