@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/operations';
-import {} from "./Login.styled"
+import {
+  LoginContainer,
+  LoginTitle,
+  LoginForm,
+  LoginLabel,
+  LoginFild,
+  LoginBtn,
+} from './Login.styled';
 
 
 const Login = () => {
@@ -28,33 +35,33 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
+    <LoginContainer>
+      <LoginTitle>Страница логина</LoginTitle>
 
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
+      <LoginForm onSubmit={handleSubmit} autoComplete="off">
+        <LoginLabel>
           Почта
-          <input
+          <LoginFild
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
           />
-        </label>
+        </LoginLabel>
 
-        <label>
+        <LoginLabel>
           Пароль
-          <input
+          <LoginFild
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
-        </label>
+        </LoginLabel>
 
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+        <LoginBtn type="submit">Войти</LoginBtn>
+      </LoginForm>
+    </LoginContainer>
   );
 }
 

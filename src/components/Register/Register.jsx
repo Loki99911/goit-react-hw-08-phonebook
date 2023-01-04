@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signupUser } from '../../redux/operations';
-import {} from './Register.styled';
+import {
+  RegisterContainer,
+  RegisterTitle,
+  RegisterForm,
+  RegisterLabel,
+  RegisterFild,
+  RegisterBtn,
+} from './Register.styled';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -31,38 +38,38 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <RegisterContainer>
+      <RegisterTitle>Страница регистрации</RegisterTitle>
 
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label >
+      <RegisterForm onSubmit={handleSubmit} autoComplete="off">
+        <RegisterLabel>
           Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+          <RegisterFild type="text" name="name" value={name} onChange={handleChange} />
+        </RegisterLabel>
 
-        <label >
+        <RegisterLabel>
           Почта
-          <input
+          <RegisterFild
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
           />
-        </label>
+        </RegisterLabel>
 
-        <label >
+        <RegisterLabel>
           Пароль
-          <input
+          <RegisterFild
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
-        </label>
+        </RegisterLabel>
 
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
+        <RegisterBtn type="submit">Зарегистрироваться</RegisterBtn>
+      </RegisterForm>
+    </RegisterContainer>
   );
 }
 

@@ -13,7 +13,7 @@ export const Filter = () => {
 
   return (
     <FilterTitle>
-      Find contact by name:
+      Search by name:
       <FilterInput
         type="text"
         name="name"

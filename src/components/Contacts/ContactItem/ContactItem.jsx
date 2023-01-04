@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ItemBlock, ItemBtn } from './ContactItem.styled';
+import { ItemBlock, ItemBtnEdit, ItemBtnDelete } from './ContactItem.styled';
 import { useSelector } from 'react-redux';
 
 export const ContactItem = ({ contactItem, onClick }) => {
@@ -7,9 +7,14 @@ export const ContactItem = ({ contactItem, onClick }) => {
   return (
     <ItemBlock>
       {contactItem.name}: {contactItem.number}
-      <ItemBtn type="button" disabled={isLoading} onClick={onClick}>
-        Delete 
-      </ItemBtn>
+      <div>
+        <ItemBtnEdit type="button" disabled={isLoading} onClick={onClick}>
+          Edit
+        </ItemBtnEdit>
+        <ItemBtnDelete type="button" disabled={isLoading} onClick={onClick}>
+          Delete
+        </ItemBtnDelete>
+      </div>
     </ItemBlock>
   );
 };

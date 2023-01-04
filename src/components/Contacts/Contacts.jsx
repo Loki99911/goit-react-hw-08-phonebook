@@ -1,7 +1,7 @@
 import { Filter } from './Filter/Filter';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList ';
-
+import {ContactsTitle} from "./Contacts.styled"
 const Contacts = () => {
   return (
     <div
@@ -10,13 +10,13 @@ const Contacts = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
+        fontSize: 24,
         color: '#010101',
       }}
     >
-      <h1 style={{ margin: 0, padding: 0 }}>Phonebook</h1>
+      <ContactsTitle>Phonebook</ContactsTitle>
       <ContactForm />
-      <h2 style={{ margin: 0, padding: 0 }}>Contacts</h2>
+      <ContactsTitle>Contacts</ContactsTitle>
       <Filter />
       <ContactList />
     </div>

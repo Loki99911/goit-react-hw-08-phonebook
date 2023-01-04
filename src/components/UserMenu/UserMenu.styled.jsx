@@ -5,21 +5,28 @@ export const UserMenuContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 export const UserMenuText = styled.p`
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: bold;
   margin: 0;
   padding: 0;
   margin-right: 10px;
+  color: #35e6d6;
 `;
+
 export const UserMenuBtn = styled.button`
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: bold;
   padding: 8px 10px;
   border-radius: 5px;
-  border: 2px solid #000000;
-  margin-left: auto;
-  background-color: #24d467;
+  border: 1px solid #35e6d6;
+  margin: 0 auto;
+  color: #35e6d6;
+  background-color: transparent;
+  cursor: pointer;
   :hover {
-    color: red;
-    border-color: red;
+    color: black;
+    background-color: #35e6d6;
   }
 `;
