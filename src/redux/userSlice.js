@@ -35,9 +35,8 @@ export const userSlice = createSlice({
     },
 
     [getCurrentUser.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
+      state.isLogin = true;
+      state.user = action.payload;
     },
   },
 });

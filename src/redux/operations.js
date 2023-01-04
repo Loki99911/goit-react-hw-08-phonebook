@@ -46,31 +46,43 @@ const token = {
 };
 
 export const signupUser = createAsyncThunk('user/signupUser', async object => {
-  const response = await axios.post('/users/signup', object);
-  token.set(response.data.token);
-  return response.data;
+  try {
+    const response = await axios.post('/users/signup', object);
+    token.set(response.data.token);
+    return response.data;
+  } catch (error) {}
 });
 
 export const loginUser = createAsyncThunk('user/loginUser', async object => {
-  const response = await axios.post('/users/login', object);
-  token.set(response.data.token);
-  return response.data;
+  try {
+    const response = await axios.post('/users/login', object);
+    token.set(response.data.token);
+    return response.data;
+  } catch (error) {}
 });
 
 export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
-  await axios.post('/users/logout');
-  token.unset();
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {}
 });
 
-export const getCurrentUser = createAsyncThunk('user/currentUser', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-console.log(state);
-  // if () { }
-  try {
-    const response = await axios.get('/users/current');
-    return response.data;
-  } catch (error) {
-     return thunkAPI.rejectWithValue();
+export const getCurrentUser = createAsyncThunk(
+  'user/currentUser',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+
+    if (state.user.token === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(state.user.token);
+
+    try {
+      const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
   }
-  
-});
+);
