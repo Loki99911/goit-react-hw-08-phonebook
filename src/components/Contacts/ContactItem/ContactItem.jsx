@@ -6,7 +6,7 @@ export const ContactItem = ({ contactItem, onClick }) => {
   const isLoading = useSelector(state => state.contacts.isLoading);
   return (
     <ItemBlock>
-      {contactItem.name}: {contactItem.phone}
+      {contactItem.name}: {contactItem.number}
       <ItemBtn type="button" disabled={isLoading} onClick={onClick}>
         Delete 
       </ItemBtn>

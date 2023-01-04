@@ -14,6 +14,7 @@ export const fetchContacts = createAsyncThunk(
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async object => {
+    console.log(object);
     const response = await axios.post('/contacts', object);
     return response.data;
   }
@@ -63,8 +64,8 @@ export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
 // token - прошить!!!!
 export const getCurrentUser = createAsyncThunk(
   'user/currentUser',
-  async token => {
-    const response = await axios.get('/users/current', token);
+  async () => {
+    const response = await axios.get('/users/current');
     return response.data;
   }
 );

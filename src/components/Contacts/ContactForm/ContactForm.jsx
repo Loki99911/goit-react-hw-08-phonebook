@@ -28,7 +28,7 @@ export const ContactForm = () => {
     if (contacts.items.find(contact => contact.name === name)) {
       return alert(`${name} is already in contacts!`);
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number:phone }));
     setName('');
     setPhone('');
   };

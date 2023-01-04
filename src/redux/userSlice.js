@@ -19,11 +19,13 @@ export const userSlice = createSlice({
     [signupUser.fulfilled]: (state, action) => {
       state.token = action.payload.token;
       state.user = action.payload.user;
+      state.isLogin = true;
     },
 
     [loginUser.fulfilled]: (state, action) => {
     state.token = action.payload.token;
-    state.user = action.payload.user;
+      state.user = action.payload.user;
+      state.isLogin = true;
     },
 
     [logoutUser.fulfilled]: (state, action) => {
