@@ -58,7 +58,16 @@ export const contactsSlice = createSlice({
     [updateContact.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-      // state.items = state.items.filter(item => item.id !== action.payload);
+      // state.items = state.items.map(item => {
+      //   if (item.id === action.id) {
+      //     return (item = action);
+      //   }
+      //   return item;
+      // });
+      const index = state.items.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.items.splice(index, 1, action.payload);
     },
     [updateContact.rejected]: (state, action) => {
       state.isLoading = false;

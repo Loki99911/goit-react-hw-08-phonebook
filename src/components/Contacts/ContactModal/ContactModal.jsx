@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../../redux/operations';
+import { updateContact } from '../../../redux/operations';
 import {
   ModalWraper,
   Modal,
@@ -9,14 +9,11 @@ import {
   ModalBtn,
 } from './ContactModal.styled';
 
-export const ContactModal = ({id}) => {
+export const ContactModal = ({ id, modalToggle }) => {
   const contacts = useSelector(state => state.contacts.items);
-  const currentContact = contacts.find(
-    contact => contact.id === id
-    );
-    console.log(currentContact);
+  const currentContact = contacts.find(contact => contact.id === id);
   const [name, setName] = useState(`${currentContact.name}`);
-  const [phone, setPhone] = useState(`${currentContact.number}`);
+  const [number, setNumber] = useState(`${currentContact.number}`);
 
   const dispatch = useDispatch();
 
@@ -26,7 +23,7 @@ export const ContactModal = ({id}) => {
         setName(event.target.value);
         break;
       case 'number':
-        setPhone(event.target.value);
+        setNumber(event.target.value);
         break;
       default:
         return;
@@ -34,16 +31,43 @@ export const ContactModal = ({id}) => {
   };
 
   const handleSubmit = event => {
-      event.preventDefault();
-      if (contacts.find(contact => contact.name === name)) {
-        return alert(`${name} is already in contacts!`);
-      }
-    dispatch(addContact({ name, number: phone }));
+    event.preventDefault();
+    if (
+      contacts.find(
+        contact => contact.name === name && contact.number === number
+      )
+    ) {
+      return alert(`${name} is already in contacts!`);
+    }
+    dispatch(updateContact({id, name, number}));
     setName('');
-    setPhone('');
+    setNumber('');
+    modalToggle();
   };
+
+  useEffect(() => {
+    const hendlePressEsc = event => {
+      if (event.code === 'Escape') {
+        modalToggle();
+      }
+    };
+
+    window.addEventListener('keydown', hendlePressEsc);
+    return () => {
+      window.removeEventListener('keydown', hendlePressEsc);
+    };
+    // Следующая строка нужна!!! что б вырубить ESLINT!!!!
+    // eslint-disable-next-line
+  }, []);
+
+  const hendleClickBackdrop = event => {
+    if (event.currentTarget === event.target) {
+      modalToggle();
+    }
+  };
+
   return (
-    <ModalWraper>
+    <ModalWraper onClick={hendleClickBackdrop}>
       <Modal onSubmit={handleSubmit}>
         <ModalTitle>
           Name
@@ -66,7 +90,7 @@ export const ContactModal = ({id}) => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={handleChange}
-            value={phone}
+            value={number}
           />
         </ModalTitle>
         <ModalBtn type="submit">Edit contact</ModalBtn>

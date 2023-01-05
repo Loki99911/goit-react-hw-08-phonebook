@@ -17,7 +17,7 @@ import {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isLogin'],
 };
 
 const persistedReducer = persistReducer(persistConfig, userSlice.reducer);

@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { logoutUser } from "../../redux/operations"
+import { useSelector } from 'react-redux';
 import {
   UserMenuContainer,
   UserMenuText,
@@ -8,9 +9,11 @@ import {
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
+  const userName = useSelector(state => state.user.user.name);
+  
   return (
     <UserMenuContainer>
-      <UserMenuText>mango@mail.com</UserMenuText>
+      <UserMenuText>{userName}</UserMenuText>
       <UserMenuBtn
         type="button"
         onClick={() => {

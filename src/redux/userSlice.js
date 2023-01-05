@@ -14,28 +14,50 @@ export const userSlice = createSlice({
     isLogin: false,
   },
 
-  extraReducers: {
-    [signupUser.fulfilled]: (state, action) => {
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-      state.isLogin = true;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(signupUser.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+        state.isLogin = true;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+        state.isLogin = true;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        state.token = null;
+        state.user = { name: null, email: null };
+        state.isLogin = false;
+      })
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.isLogin = true;
+        state.user = action.payload;
+      });
 
-    [loginUser.fulfilled]: (state, action) => {
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-      state.isLogin = true;
-    },
+    // extraReducers: {
+    //   [signupUser.fulfilled]: (state, action) => {
+    //     state.token = action.payload.token;
+    //     state.user = action.payload.user;
+    //     state.isLogin = true;
+    //   },
 
-    [logoutUser.fulfilled]: (state, action) => {
-      state.token = null;
-      state.user = { name: null, email: null };
-      state.isLogin = false;
-    },
+    //   [loginUser.fulfilled]: (state, action) => {
+    //     state.token = action.payload.token;
+    //     state.user = action.payload.user;
+    //     state.isLogin = true;
+    //   },
 
-    [getCurrentUser.fulfilled]: (state, action) => {
-      state.isLogin = true;
-      state.user = action.payload;
-    },
+    //   [logoutUser.fulfilled]: (state, action) => {
+    //     state.token = null;
+    //     state.user = { name: null, email: null };
+    //     state.isLogin = false;
+    //   },
+
+    //   [getCurrentUser.fulfilled]: (state, action) => {
+    //     state.isLogin = true;
+    //     state.user = action.payload;
+    //   },
   },
 });

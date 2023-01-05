@@ -7,26 +7,23 @@ import {ContactModal} from "../ContactModal/ContactModal"
 export const ContactItem = ({ contactItem, onClick }) => {
   const isLoading = useSelector(state => state.contacts.isLoading);
   // const modal = useSelector(state => state.contacts.isLoading);
-  const [modal,setModal] = useState(false)
+  const [modal, setModal] = useState(false)
+  
+  const toggleModal = () => {
+    setModal(prevModal => !prevModal);
+  }
   return (
     <ItemBlock>
       {contactItem.name}: {contactItem.number}
       <div>
-        <ItemBtnEdit
-          type="button"
-          disabled={isLoading}
-          onClick={() => {
-            console.log(contactItem.id);
-            setModal(!modal);
-          }}
-        >
+        <ItemBtnEdit type="button" disabled={isLoading} onClick={toggleModal}>
           Edit
         </ItemBtnEdit>
         <ItemBtnDelete type="button" disabled={isLoading} onClick={onClick}>
           Delete
         </ItemBtnDelete>
         {modal && (
-          <ContactModal id={contactItem.id}/>
+          <ContactModal id={contactItem.id} modalToggle={toggleModal} />
         )}
       </div>
     </ItemBlock>
