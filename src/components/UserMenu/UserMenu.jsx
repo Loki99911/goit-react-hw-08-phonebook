@@ -10,7 +10,7 @@ import {
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const userName = useSelector(state => state.user.user.name);
-  
+
   return (
     <UserMenuContainer>
       <UserMenuText>{userName}</UserMenuText>
