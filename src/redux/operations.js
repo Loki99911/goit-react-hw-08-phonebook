@@ -33,13 +33,13 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-// export const updateContact = createAsyncThunk(
-//   'contacts/deleteContact',
-//   async ({id, object}) => {
-//     const response = await axios.patch(`/contacts/${id}`, object);
-//     return response.data;
-//   }
-// );
+export const updateContact = createAsyncThunk(
+  'contacts/updateContact',
+  async ({id, object}) => {
+    const response = await axios.patch(`/contacts/${id}`, object);
+    return response.data;
+  }
+);
 
 const token = {
   set(token) {
