@@ -36,11 +36,11 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <LoginTitle>Страница логина</LoginTitle>
+      <LoginTitle>Login page</LoginTitle>
 
       <LoginForm onSubmit={handleSubmit} autoComplete="off">
         <LoginLabel>
-          Почта
+          Email
           <LoginFild
             type="email"
             name="email"
@@ -50,7 +50,7 @@ const Login = () => {
         </LoginLabel>
 
         <LoginLabel>
-          Пароль
+          Password
           <LoginFild
             type="password"
             name="password"
@@ -59,7 +59,7 @@ const Login = () => {
           />
         </LoginLabel>
 
-        <LoginBtn type="submit">Войти</LoginBtn>
+        <LoginBtn type="submit">Enter</LoginBtn>
       </LoginForm>
     </LoginContainer>
   );

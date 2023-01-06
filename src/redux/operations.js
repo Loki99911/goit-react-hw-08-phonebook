@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -9,7 +10,9 @@ export const fetchContacts = createAsyncThunk(
     try {
       const response = await axios.get('/contacts');
       return response.data;
-    } catch (error) {}
+    } catch (error) {
+      toast.error(`Error! Bad request.`);
+    }
   }
 );
 
@@ -19,7 +22,9 @@ export const addContact = createAsyncThunk(
     try {
       const response = await axios.post('/contacts', object);
       return response.data;
-    } catch (error) {}
+    } catch (error) {
+      toast.error(`Error! Bad request.`);
+    }
   }
 );
 
@@ -29,17 +34,22 @@ export const deleteContact = createAsyncThunk(
     try {
       const response = await axios.delete(`/contacts/${id}`);
       return response.data.id;
-    } catch (error) {}
+    } catch (error) {
+      toast.error(`Error! Bad request.`);
+    }
   }
 );
 
 export const updateContact = createAsyncThunk(
   'contacts/updateContact',
   async ({ id, name, number }) => {
-    const object = {name, number}
-    const response = await axios.patch(`/contacts/${id}`, object);
-    console.log(response);
-    return response.data;
+    try {
+      const object = { name, number };
+      const response = await axios.patch(`/contacts/${id}`, object);
+      return response.data;
+    } catch (error) {
+      toast.error(`Error! Bad request.`);
+    }
   }
 );
 
@@ -57,7 +67,9 @@ export const signupUser = createAsyncThunk('user/signupUser', async object => {
     const response = await axios.post('/users/signup', object);
     token.set(response.data.token);
     return response.data;
-  } catch (error) {}
+  } catch (error) {
+    toast.error(`Error! Bad request.`);
+  }
 });
 
 export const loginUser = createAsyncThunk('user/loginUser', async object => {
@@ -65,14 +77,18 @@ export const loginUser = createAsyncThunk('user/loginUser', async object => {
     const response = await axios.post('/users/login', object);
     token.set(response.data.token);
     return response.data;
-  } catch (error) {}
+  } catch (error) {
+    toast.error(`Wrong Mail or Password!`);
+  }
 });
 
 export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
   try {
     await axios.post('/users/logout');
     token.unset();
-  } catch (error) {}
+  } catch (error) {
+    toast.error(`Bad request.`);
+  }
 });
 
 export const getCurrentUser = createAsyncThunk(

@@ -23,16 +23,26 @@ export const ContactList = () => {
     }
     return [];
   };
+ 
+  const apruveDelete = ({ id, name }) => {
+    const apruve = window.confirm(
+      `You want to delete the contact "${name}"! Are you sure?`
+    );
+    if (apruve) {
+      dispatch(deleteContact(id));
+    }
+  };
 
   return (
     <ListBlock>
       {filterContact().map(contact => {
         const { id } = contact;
+        
         return (
           <ContactItem
             key={id}
             contactItem={contact}
-            onClick={() => dispatch(deleteContact(id))}
+            onClick={() => apruveDelete(contact)}
           />
         );
       })}

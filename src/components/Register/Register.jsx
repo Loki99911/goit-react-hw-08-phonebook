@@ -39,16 +39,17 @@ const Register = () => {
 
   return (
     <RegisterContainer>
-      <RegisterTitle>Страница регистрации</RegisterTitle>
+      <RegisterTitle>
+Registration page</RegisterTitle>
 
       <RegisterForm onSubmit={handleSubmit} autoComplete="off">
         <RegisterLabel>
-          Имя
+          Name
           <RegisterFild type="text" name="name" value={name} onChange={handleChange} />
         </RegisterLabel>
 
         <RegisterLabel>
-          Почта
+          Email
           <RegisterFild
             type="email"
             name="email"
@@ -58,7 +59,7 @@ const Register = () => {
         </RegisterLabel>
 
         <RegisterLabel>
-          Пароль
+          Password
           <RegisterFild
             type="password"
             name="password"
@@ -67,7 +68,7 @@ const Register = () => {
           />
         </RegisterLabel>
 
-        <RegisterBtn type="submit">Зарегистрироваться</RegisterBtn>
+        <RegisterBtn type="submit">Registrate</RegisterBtn>
       </RegisterForm>
     </RegisterContainer>
   );

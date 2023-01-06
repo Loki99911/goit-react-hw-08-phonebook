@@ -6,6 +6,8 @@ import { getCurrentUser } from '../redux/operations';
 import { Navigation } from './Navigation/Navigation';
 import { PrivateRoute, PublicRoute } from './PPRouts';
 import { AppContainer } from './App.styled';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = lazy(() => import('./Home/Home'));
 const Register = lazy(() => import('./Register/Register'));
@@ -58,6 +60,7 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
+      <ToastContainer position="top-center" autoClose={3000} theme="dark" />
     </AppContainer>
   );
 };

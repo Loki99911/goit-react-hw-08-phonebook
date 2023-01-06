@@ -11,7 +11,7 @@ const Home = () => {
   const isLogin = useSelector(state => state.user.isLogin);
   return (
     <HomeContainer>
-      <HomeTitle>Welcome to Your phone book!!! </HomeTitle>
+      <HomeTitle>Welcome to phone book!!! </HomeTitle>
       {isLogin ? (
         <HomeContainerLogin>
           <p>
@@ -20,7 +20,7 @@ const Home = () => {
           </p>
           <p>Let's get to work:</p>
           <Link to="/contacts">
-            <SlActionRedo />
+            <SlActionRedo size={24} />
             Contacts
           </Link>
         </HomeContainerLogin>
@@ -32,11 +32,11 @@ const Home = () => {
           </p>
           <p>Let's get log in or register:</p>
           <Link to="/register">
-            <SlActionRedo />
+            <SlActionRedo size={24} />
             Register
           </Link>
           <Link to="/login">
-            <SlActionRedo />
+            <SlActionRedo size={24} />
             Login
           </Link>
         </HomeContainerLogin>
