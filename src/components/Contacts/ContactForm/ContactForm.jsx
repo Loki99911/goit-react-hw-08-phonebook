@@ -45,6 +45,7 @@ export const ContactForm = () => {
           required
           onChange={handleChange}
           value={name}
+          placeholder="my@mail.com"
         />
       </FormTitle>
       <FormTitle>
@@ -57,6 +58,7 @@ export const ContactForm = () => {
           required
           onChange={handleChange}
           value={phone}
+          placeholder="+38(050)123-45-67"
         />
       </FormTitle>
       <FormBtn type="submit" disabled={contacts.isLoading}>

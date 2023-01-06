@@ -46,6 +46,7 @@ const Login = () => {
             name="email"
             value={email}
             onChange={handleChange}
+            placeholder="my@mail.com"
           />
         </LoginLabel>
 

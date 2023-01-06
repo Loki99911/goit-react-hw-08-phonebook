@@ -26,6 +26,7 @@ export const LoginForm = styled.form`
 `;
 
 export const LoginLabel = styled.label`
+  font-size: 19px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -57,6 +58,3 @@ export const LoginBtn = styled.button`
     background-color: #35e6d6;
   }
 `;
-
-
-

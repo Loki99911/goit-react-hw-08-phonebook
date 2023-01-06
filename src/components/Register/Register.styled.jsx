@@ -25,6 +25,7 @@ export const RegisterForm = styled.form`
 `;
 
 export const RegisterLabel = styled.label`
+font-size: 19px;
   display: flex;
   align-items: center;
   width: 100%;

@@ -39,13 +39,18 @@ const Register = () => {
 
   return (
     <RegisterContainer>
-      <RegisterTitle>
-Registration page</RegisterTitle>
+      <RegisterTitle>Registration page</RegisterTitle>
 
       <RegisterForm onSubmit={handleSubmit} autoComplete="off">
         <RegisterLabel>
           Name
-          <RegisterFild type="text" name="name" value={name} onChange={handleChange} />
+          <RegisterFild
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            placeholder="Name Surname"
+          />
         </RegisterLabel>
 
         <RegisterLabel>
@@ -55,6 +60,7 @@ Registration page</RegisterTitle>
             name="email"
             value={email}
             onChange={handleChange}
+            placeholder="my@mail.com"
           />
         </RegisterLabel>
 

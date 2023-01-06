@@ -22,6 +22,7 @@ export const Filter = () => {
         required
         onChange={filterInput}
         value={filter}
+        placeholder="Name Surname"
       />
     </FilterTitle>
   );
