@@ -32,20 +32,26 @@ export const ContactList = () => {
       dispatch(deleteContact(id));
     }
   };
-
+  
   return (
-    <ListBlock>
-      {filterContact().map(contact => {
-        const { id } = contact;
-        
-        return (
-          <ContactItem
-            key={id}
-            contactItem={contact}
-            onClick={() => apruveDelete(contact)}
-          />
-        );
-      })}
-    </ListBlock>
+    <>
+      {contacts.length === 0 ? (
+        <p>No contacts yet.</p>
+      ) : (
+        <ListBlock>
+          {filterContact().map(contact => {
+            const { id } = contact;
+
+            return (
+              <ContactItem
+                key={id}
+                contactItem={contact}
+                onClick={() => apruveDelete(contact)}
+              />
+            );
+          })}
+        </ListBlock>
+      )}
+    </>
   );
 };
