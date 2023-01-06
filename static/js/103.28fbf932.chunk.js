@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkphonebook=self.webpackChunkphonebook||[]).push([[103],{103:function(n,e,o){o.r(e),o.d(e,{default:function(){return c}});var t,i=o(168),r=o(444).ZP.h1(t||(t=(0,i.Z)(["\n  font-size: 36px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 0 auto;\n  margin-top: 30px;\n"]))),u=o(184),c=function(){return(0,u.jsx)("div",{children:(0,u.jsx)(r,{children:"Welcome to Your phone book!!! "})})}}}]);
-//# sourceMappingURL=103.28fbf932.chunk.js.map
